@@ -1,10 +1,9 @@
 #!/usr/bin/env python
-import unittest as ut
 import uuid
 import datetime as dt
 
 
-class BaseModel(ut.TestCase):
+class BaseModel():
     """
         BaseModel Class
         all common attributes/methods for other classes
@@ -27,5 +26,3 @@ class BaseModel(ut.TestCase):
         info["created_at"] = self.created_at.isoformat()
         info["updated_at"] = self.updated_at.isoformat()
         return info
-
-
