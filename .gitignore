@@ -1,7 +1,7 @@
 .vscode/settings.json
 
-test_3.py
+*test*.py
 
-models/__pycache__/
+**/__pycache__/
 
-4-test.py
+file.json
