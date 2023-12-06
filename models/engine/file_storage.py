@@ -36,10 +36,3 @@ class FileStorage:
 
         except FileNotFoundError:
             pass
-
-    def classes(self):
-        from models.base_model import BaseModel
-
-        classes = {"BaseModel": BaseModel}
-
-        return classes
