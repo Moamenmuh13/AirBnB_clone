@@ -1,8 +1,9 @@
 import json
 
 
-class FileStorage():
-    """ Class To read/wrtie objects as json """
+class FileStorage:
+    """Class To read/wrtie objects as json"""
+
     def __init__(self):
         self.__file_path = "file.json"
         self.__objects = dict()
@@ -35,3 +36,10 @@ class FileStorage():
 
         except FileNotFoundError:
             pass
+
+    def classes(self):
+        from models.base_model import BaseModel
+
+        classes = {"BaseModel": BaseModel}
+
+        return classes
