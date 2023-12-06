@@ -20,15 +20,15 @@ class BaseModel():
 
         if kwargs:
             for key, value in kwargs.items():
-                if key == "__class__":
-                    continue
-                elif key in ["created_at", "updated_at"]:
+                # if key == "__class__":
+                #     continue
+                if key in ["created_at", "updated_at"]:
                     setattr(self, key, dt.datetime.fromisoformat(value))
                 else:
-                    setattr(self, key, value)
+                    self.__dict__[key] = kwargs[key]
 
     def __str__(self):
-        return f"{self.__class__.__name__} ({self.id} {self.__dict__})"
+        return f"[{self.__class__.__name__}] ({self.id}) ({self.__dict__})"
 
     def save(self):
         self.updated_at = dt.datetime.now()

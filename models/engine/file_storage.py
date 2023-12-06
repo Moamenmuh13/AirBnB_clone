@@ -11,15 +11,27 @@ class FileStorage():
         return self.__objects
 
     def new(self, obj):
-        self.__objects[f"{obj.id}"] = obj.to_dict()
+        key = f"{obj.__class__.__name__}.{obj.id}"
+        self.__objects[key] = obj
+
+    def classes(self):
+        """Returns a dictionary of valid classes and their references"""
+        from models.base_model import BaseModel
+        classes = {"BaseModel": BaseModel}
+        return classes
 
     def save(self):
-        with open(f"{self.__file_path}", 'w') as write_file:
-            json.dump(self.__objects, write_file)
+        with open(self.__file_path, "w", encoding="utf-8") as write_file:
+            d = {key: value.to_dict() for key, value in self.__objects.items()}
+            json.dump(d, write_file)
 
     def reload(self):
         try:
             with open(f"{self.__file_path}", 'r') as read_file:
-                self.__objects = json.load(read_file)
+                obj_dict = json.load(read_file)
+                obj_dict = {k: self.classes()[v["__class__"]](**v)
+                            for k, v in obj_dict.items()}
+            self.__objects = obj_dict
+
         except FileNotFoundError:
             pass
