@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from base_model import BaseModel
+from models.base_model import BaseModel
 
 """ Define an Amenity Class Inherite from Base Model"""
 
