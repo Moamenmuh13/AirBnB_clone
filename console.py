@@ -133,7 +133,11 @@ class HBNBCommand(cmd.Cmd):
                     except ValueError:
                         print("** invalid value **")
                 else:
-                    print("** attribute doesn't exist **")
+                    # Add the attribute to the class with the specified value
+                    attrType = type(value)
+                    setattr(instance.__class__, attributeName, attrType)
+                    setattr(instance, attributeName, value)
+                    instance.save()
             else:
                 print("** cannot update id, created_at, or updated_at **")
 
