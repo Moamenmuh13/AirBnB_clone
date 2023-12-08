@@ -1,6 +1,6 @@
 import json
 from ..base_model import BaseModel
-from ..users import User
+from ..user import User
 
 
 class FileStorage:
