@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import uuid
 import datetime as dt
-from . import storage
 
 
 class BaseModel():
@@ -13,6 +12,7 @@ class BaseModel():
         self.id = str(uuid.uuid4())
         self.created_at = dt.datetime.now()
         self.updated_at = self.created_at
+        from models import storage
         storage.new(self)
         # Note For anyone reading
         # The self here doesn't refer to the storage object
@@ -32,6 +32,7 @@ class BaseModel():
 
     def save(self):
         self.updated_at = dt.datetime.now()
+        from models import storage
         storage.save()
 
     def to_dict(self):

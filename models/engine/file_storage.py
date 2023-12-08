@@ -1,4 +1,6 @@
 import json
+from ..base_model import BaseModel
+from ..users import User
 
 
 class FileStorage:
@@ -17,8 +19,9 @@ class FileStorage:
 
     def classes(self):
         """Returns a dictionary of valid classes and their references"""
-        from models.base_model import BaseModel
-        classes = {"BaseModel": BaseModel}
+        classes = {"BaseModel": BaseModel,
+                   "User": User
+                   }
         return classes
 
     def save(self):
@@ -33,6 +36,5 @@ class FileStorage:
                 obj_dict = {k: self.classes()[v["__class__"]](**v)
                             for k, v in obj_dict.items()}
             self.__objects = obj_dict
-
         except FileNotFoundError:
             pass

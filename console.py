@@ -1,15 +1,16 @@
 #!/usr/bin/python3
 """ Console module"""
 import cmd
-from models.base_model import BaseModel
 from models import storage
+from models.base_model import BaseModel
+from models.users import User
 
 
 class HBNBCommand(cmd.Cmd):
     """Command interpreter class."""
 
     prompt = "(hbnb) "
-    __classes = {"BaseModel"}
+    __classes = {"BaseModel", "User"}
 
     def emptyline(self):
         """Do nothing when the line is empty"""
