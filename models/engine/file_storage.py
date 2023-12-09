@@ -1,6 +1,11 @@
 import json
 from ..base_model import BaseModel
 from ..user import User
+from ..amenity import Amenity
+from ..city import City
+from ..place import Place
+from ..review import Review
+from ..state import State
 
 
 class FileStorage:
@@ -20,7 +25,12 @@ class FileStorage:
     def classes(self):
         """Returns a dictionary of valid classes and their references"""
         classes = {"BaseModel": BaseModel,
-                   "User": User
+                   "User": User,
+                   "Amenity": Amenity,
+                   "City": City,
+                   "Place": Place,
+                   "Review": Review,
+                   "State": State
                    }
         return classes
 
