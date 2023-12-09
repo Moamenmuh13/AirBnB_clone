@@ -1,11 +1,10 @@
 #!/usr/bin/env python
-
-from models.base_model import BaseModel
-
 """ Define a Place Class Inherite from Base Model"""
+from models.base_model import BaseModel
 
 
 class Place(BaseModel):
+    """ Define a Place Class Inherite from Base Model"""
     city_id = ""
     user_id = ""
     name = ""
