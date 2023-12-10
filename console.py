@@ -18,8 +18,7 @@ class HBNBCommand(cmd.Cmd):
     """
 
     prompt = "(hbnb) "
-    __classes = {"BaseModel", "User", "City",
-                 "Place", "Review", "State", "Amenity"}
+    __classes = {"BaseModel", "User", "City", "Place", "Review", "State", "Amenity"}
 
     def emptyline(self):
         """Do nothing when the line is empty"""
@@ -94,13 +93,11 @@ class HBNBCommand(cmd.Cmd):
         instances based or not on the class name.
         """
         args = arg.split()
-        print("Storage Classes:", HBNBCommand.__classes)
         if args and args[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
         else:
             listOfModels = []
             for model in storage.all().values():
-                print("Class Name:", model.__class__.__name__)
                 if not args or args[0] == model.__class__.__name__:
                     listOfModels.append(str(model))
             print(listOfModels)
