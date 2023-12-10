@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 """ Console module"""
 import cmd
 from models import storage
@@ -12,11 +12,14 @@ from models.state import State
 
 
 class HBNBCommand(cmd.Cmd):
-    """Command interpreter class."""
+    """Command interpreter class.
+    Attributes:
+        prompt : The command prompt.
+    """
 
     prompt = "(hbnb) "
-    __classes = {"BaseModel", "User", "City", "Place", "Review",
-                 "State", "Amenity"}
+    __classes = {"BaseModel", "User", "City",
+                 "Place", "Review", "State", "Amenity"}
 
     def emptyline(self):
         """Do nothing when the line is empty"""
