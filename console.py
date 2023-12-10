@@ -145,8 +145,6 @@ class HBNBCommand(cmd.Cmd):
                     setattr(instance.__class__, attributeName, attrType)
                     setattr(instance, attributeName, value)
                     instance.save()
-            else:
-                pass
 
 
 if __name__ == "__main__":
