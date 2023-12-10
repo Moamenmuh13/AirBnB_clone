@@ -18,8 +18,7 @@ class HBNBCommand(cmd.Cmd):
     """
 
     prompt = "(hbnb) "
-    __classes = {"BaseModel", "User", "City", "Place", "Review", "State",
-                 "Amenity"}
+    __classes = {"BaseModel", "User", "City", "Place", "Review", "State", "Amenity"}
 
     def emptyline(self):
         """Do nothing when the line is empty"""
@@ -38,15 +37,15 @@ class HBNBCommand(cmd.Cmd):
         """Creates a new instance of BaseModel
         and save it to json file.
         """
-        if not arg:
+        args = arg.split()
+        if len(args) == 0:
             print("** class name missing **")
+        elif args[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
         else:
-            try:
-                new_instance = eval(arg)()
-                new_instance.save()
-                print(new_instance.id)
-            except NameError:
-                print("** class doesn't exist **")
+            new_instance = eval(arg)()
+            new_instance.save()
+            print(new_instance.id)
 
     def do_show(self, arg):
         """
