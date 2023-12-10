@@ -18,8 +18,7 @@ class HBNBCommand(cmd.Cmd):
     """
 
     prompt = "(hbnb) "
-    __classes = {"BaseModel", "User", "City",
-                 "Place", "Review", "State", "Amenity"}
+    __classes = {"BaseModel", "User", "City", "Place", "Review", "State", "Amenity"}
 
     def emptyline(self):
         """Do nothing when the line is empty"""
@@ -111,7 +110,6 @@ class HBNBCommand(cmd.Cmd):
         by adding or updating attribute.
         """
         args = arg.split()
-        key = "{}.{}".format(args[0], args[1])
 
         if len(args) == 0:
             print("** class name missing **")
@@ -119,17 +117,17 @@ class HBNBCommand(cmd.Cmd):
             print("** class does'nt exist **")
         elif len(args) == 1:
             print("** instace id missing **")
-        elif key not in storage.all().keys():
+        elif "{}.{}".format(args[0], args[1]) not in storage.all().keys():
             print("** no instance found **")
         elif len(args) == 2:
             print("** attribute name missing **")
         elif len(args) == 3:
             try:
-                (eval(args[2] != dict))
+                value = eval(args[2])
             except NameError:
                 print("** value missing **")
         else:
-            instance = storage.all()[key]
+            instance = storage.all()["{}.{}".format(args[0], args[1])]
             attributeName = args[2]
             value = args[3]
 
