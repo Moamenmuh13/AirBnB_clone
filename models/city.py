@@ -1,8 +1,6 @@
 #!/usr/bin/env python
-
-from models.base_model import BaseModel
-
 """ Define a City Class Inherite from Base Model"""
+from models.base_model import BaseModel
 
 
 class City(BaseModel):

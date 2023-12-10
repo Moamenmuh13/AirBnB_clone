@@ -34,7 +34,7 @@ class BaseModel():
 
     def __str__(self):
         """return the string representaion of the object"""
-        return f"[{self.__class__.__name__}] ({self.id}) ({self.__dict__})"
+        return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
         """wrtie the object to the json file"""
@@ -45,7 +45,8 @@ class BaseModel():
     def to_dict(self):
         """converts the attributes of the object to dict format"""
         info = dict()
-        info = self.__dict__.copy()
+        info = info = {key: list(value) if isinstance(value, set)
+                       else value for key, value in self.__dict__.items()}
         info["__class__"] = self.__class__.__name__
         info["created_at"] = self.created_at.isoformat()
         info["updated_at"] = self.updated_at.isoformat()
