@@ -18,7 +18,8 @@ class HBNBCommand(cmd.Cmd):
     """
 
     prompt = "(hbnb) "
-    __classes = {"BaseModel", "User", "City", "Place", "Review", "State", "Amenity"}
+    __classes = {"BaseModel", "User", "City",
+                 "Place", "Review", "State", "Amenity"}
 
     def emptyline(self):
         """Do nothing when the line is empty"""
