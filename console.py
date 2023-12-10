@@ -146,7 +146,7 @@ class HBNBCommand(cmd.Cmd):
                     setattr(instance, attributeName, value)
                     instance.save()
             else:
-                print("** cannot update id, created_at, or updated_at **")
+                pass
 
 
 if __name__ == "__main__":
