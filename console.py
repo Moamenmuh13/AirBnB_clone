@@ -99,10 +99,9 @@ class HBNBCommand(cmd.Cmd):
             listOfModels = []
             for model in storage.all().values():
                 if len(args) > 0 and args[0] == model.__class__.__name__:
-                    listOfModels.append(model.__str__())
+                    listOfModels.append(str(model))
                 elif len(args) == 0:
-                    listOfModels.append(model.__str__())
-
+                    listOfModels.append(str(model))
             print(listOfModels)
 
     def do_update(self, arg):
