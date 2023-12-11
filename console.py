@@ -53,11 +53,11 @@ class HBNBCommand(cmd.Cmd):
         of an instance based on the class name and id.
         """
         args = arg.split()
-        if not args:
+        if len(args) == 0:
             print("** class name missing **")
         elif args[0] not in HBNBCommand().__classes:
             print("** class doesn't exist **")
-        elif len(args) < 2:
+        elif len(args) == 1:
             print("** instance id missing **")
         else:
             key = "{}.{}".format(args[0], args[1])
@@ -72,11 +72,11 @@ class HBNBCommand(cmd.Cmd):
         Deletes an instance based on the class name and id.
         """
         args = arg.split()
-        if not args:
+        if len(args) == 0:
             print("** class name missing **")
         elif args[0] not in HBNBCommand().__classes:
             print("** class doesn't exist **")
-        elif len(args) < 2:
+        elif len(args) == 1:
             print("** instance id missing **")
         else:
             key = "{}.{}".format(args[0], args[1])
@@ -93,13 +93,16 @@ class HBNBCommand(cmd.Cmd):
         instances based or not on the class name.
         """
         args = arg.split()
-        if args and args[0] not in HBNBCommand.__classes:
+        if len(args) > 0 and args[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
         else:
             listOfModels = []
             for model in storage.all().values():
-                if not args or args[0] == model.__class__.__name__:
-                    listOfModels.append(str(model))
+                if len(args) > 0 and args[0] == model.__class__.__name__:
+                    listOfModels.append(model.__str__())
+                elif len(args) == 0:
+                    listOfModels.append(model.__str__())
+
             print(listOfModels)
 
     def do_update(self, arg):
